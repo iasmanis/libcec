@@ -195,10 +195,12 @@ bool CCECCommandHandler::HandleCommand(const cec_command &command)
   case CEC_OPCODE_REQUEST_ARC_START:
     // this is to test python ARC virtual sink e.g. for fake amps
     // actual response has to be sent from python client
+    LIB_CEC->AddLog(CEC_LOG_DEBUG, "Request for CEC_OPCODE_REQUEST_ARC_START: %s", ToString(command).c_str());
     iHandled = COMMAND_HANDLED;
     break;
   case CEC_OPCODE_GIVE_AUDIO_STATUS:
     // see: CEC_OPCODE_REQUEST_ARC_START
+    LIB_CEC->AddLog(CEC_LOG_DEBUG, "Request for CEC_OPCODE_GIVE_AUDIO_STATUS: %s", ToString(command).c_str());
     iHandled = COMMAND_HANDLED;
     break;
   default:
