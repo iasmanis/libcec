@@ -192,6 +192,15 @@ bool CCECCommandHandler::HandleCommand(const cec_command &command)
     // but it should not respond with a feature abort
     iHandled = COMMAND_HANDLED;
     break;
+  case CEC_OPCODE_REQUEST_ARC_START:
+    // this is to test python ARC virtual sink e.g. for fake amps
+    // actual response has to be sent from python client
+    iHandled = COMMAND_HANDLED;
+    break;
+  case CEC_OPCODE_GIVE_AUDIO_STATUS:
+    // see: CEC_OPCODE_REQUEST_ARC_START
+    iHandled = COMMAND_HANDLED;
+    break;
   default:
     break;
   }
