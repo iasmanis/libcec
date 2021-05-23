@@ -198,11 +198,6 @@ bool CCECCommandHandler::HandleCommand(const cec_command &command)
     LIB_CEC->AddLog(CEC_LOG_DEBUG, "Request for CEC_OPCODE_REQUEST_ARC_START: %s", ToString(command).c_str());
     iHandled = COMMAND_HANDLED;
     break;
-  case CEC_OPCODE_GIVE_AUDIO_STATUS:
-    // see: CEC_OPCODE_REQUEST_ARC_START
-    LIB_CEC->AddLog(CEC_LOG_DEBUG, "Request for CEC_OPCODE_GIVE_AUDIO_STATUS: %s", ToString(command).c_str());
-    iHandled = COMMAND_HANDLED;
-    break;
   default:
     break;
   }
