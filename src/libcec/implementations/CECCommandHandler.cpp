@@ -192,10 +192,16 @@ bool CCECCommandHandler::HandleCommand(const cec_command &command)
         iHandled = COMMAND_HANDLED;
         break;
     case CEC_OPCODE_REQUEST_ARC_START:
+        // Tv sends us request to enable ARC,
+        // we repond with CEC_OPCODE_START_ARC request to TV
         // this is to test python ARC virtual sink e.g. for fake amps
         // actual response has to be sent from python client
         // LIB_CEC->AddLog(CEC_LOG_DEBUG, "Request for CEC_OPCODE_REQUEST_ARC_START: %s", ToString(command).c_str());
         iHandled = HandleSystemAudioArcStart(command);
+        break;
+    case CEC_OPCODE_REPORT_ARC_STARTED:
+        // After CEC_OPCODE_START_ARC request TV responds with CEC_OPCODE_REPORT_ARC_STARTED
+        iHandled = COMMAND_HANDLED;
         break;
     default:
         break;
@@ -963,6 +969,7 @@ bool CCECCommandHandler::TransmitStandby(const cec_logical_address iInitiator, c
 
 bool CCECCommandHandler::TransmitArcStarted(const cec_logical_address iInitiator, const cec_logical_address iDestination)
 {
+    // https://zhuanlan.zhihu.com/p/80772947
     // Then get the CEC version, and then reply... followed by various requests.
     // 0xc3 (Request ARC initiation) will be sent when the various information of the TV bar is collected
     // At this time, the speaker sends 0XC0 (initiate arc) to the TV
