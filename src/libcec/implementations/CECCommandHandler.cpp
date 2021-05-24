@@ -963,8 +963,16 @@ bool CCECCommandHandler::TransmitStandby(const cec_logical_address iInitiator, c
 
 bool CCECCommandHandler::TransmitArcStarted(const cec_logical_address iInitiator, const cec_logical_address iDestination)
 {
+    // Then get the CEC version, and then reply... followed by various requests.
+    // 0xc3 (Request ARC initiation) will be sent when the various information of the TV bar is collected
+    // At this time, the speaker sends 0XC0 (initiate arc) to the TV
+    // Then the TV informs everyone 0x82 (active source)
+    // Then set 0x72 (SetSystemAudioMode)
+    // TV sent to speaker 0xc1 (report arc initiated)
+    // After my TV is initialized, it will always send 0x82 to 0x0f, and then I must reply 0xc0 or it will drop.
+
     cec_command command;
-    cec_command::Format(command, iInitiator, iDestination, CEC_OPCODE_REPORT_ARC_STARTED);
+    cec_command::Format(command, iInitiator, iDestination, CEC_OPCODE_START_ARC);
 
     return Transmit(command, false, false);
 }
