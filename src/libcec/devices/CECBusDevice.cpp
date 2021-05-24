@@ -1517,7 +1517,7 @@ bool CCECBusDevice::TransmitMuteAudio(const cec_logical_address source)
 bool CCECBusDevice::TransmitArcStarted(const cec_logical_address initiator)
 {
     MarkBusy();
-    bool bReturn = m_handler->TransmitArcStarted(initiator, m_iLogicalAddress);
+    bool bReturn = m_handler->TransmitArcStarted(m_iLogicalAddress, initiator);
     MarkReady();
     return bReturn;
 }

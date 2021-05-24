@@ -731,7 +731,7 @@ int CCECCommandHandler::HandleSystemAudioArcStart(const cec_command &command)
         CCECAudioSystem *device = CCECBusDevice::AsAudioSystem(GetDevice(command.destination));
         if (device)
         {
-            LIB_CEC->AddLog(CEC_LOG_DEBUG, "HandleSystemAudioArcStart: audio device %s ok", ToString(command.initiator));
+            LIB_CEC->AddLog(CEC_LOG_DEBUG, "HandleSystemAudioArcStart: audio device %s ok", ToString(command.destination));
             device->SetSystemAudioArcStart((cec_logical_address)command.initiator);
             return COMMAND_HANDLED;
         }
