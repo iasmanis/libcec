@@ -1,7 +1,8 @@
 #!/bin/bash
 
+set -e
 
-export PYTHON_LIBDIR=$(python -c 'from distutils import sysconfig; print(sysconfig.get_config_var("LIBDIR"))')
+export PYTHON_LIBDIR="/usr/lib/x86_64-linux-gnu"
 export PYTHON_LDLIBRARY=$(python -c 'from distutils import sysconfig; print(sysconfig.get_config_var("LDLIBRARY"))')
 export PYTHON_LIBRARY="${PYTHON_LIBDIR}/${PYTHON_LDLIBRARY}"
 export PYTHON_INCLUDE_DIR=$(python -c 'from distutils import sysconfig; print(sysconfig.get_python_inc())')
@@ -10,7 +11,7 @@ echo "PYTHON_LDLIBRARY = $PYTHON_LDLIBRARY"
 echo "PYTHON_LIBRARY = $PYTHON_LIBRARY"
 echo "PYTHON_INCLUDE_DIR = $PYTHON_INCLUDE_DIR"
 
-mkdir build
+mkdir -p build &> /dev/null
 cd build
 
 cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr \

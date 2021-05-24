@@ -13,7 +13,7 @@ ENV P8_PLATFORM_VERSION=2.1.0.1
 ADD https://github.com/Pulse-Eight/platform/archive/p8-platform-${P8_PLATFORM_VERSION}.tar.gz /root/
 
 RUN apt-get -y update \
-    && apt-get -y install cmake libudev-dev libxrandr-dev swig build-essential libxrandr2 liblircclient-dev \
+    && apt-get -y install cmake libudev-dev libxrandr-dev swig build-essential libxrandr2 liblircclient-dev python-dev \
     && rm -rf /var/cache/apk/*
 
 # P8 platform
