@@ -151,7 +151,7 @@ bool CCECAudioSystem::RequestAudioStatus(const cec_logical_address initiator, bo
 
 bool CCECAudioSystem::SetSystemAudioArcStart(const cec_logical_address source)
 {
-    bool bReturn(true);
+    bool bReturn(false);
 
     bReturn = TransmitArcStarted(source);
     CLockObject lock(m_mutex);

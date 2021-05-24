@@ -723,16 +723,16 @@ int CCECCommandHandler::HandleSystemAudioModeStatus(const cec_command &command)
 
 int CCECCommandHandler::HandleSystemAudioArcStart(const cec_command &command)
 {
-    LIB_CEC->AddLog(CEC_LOG_DEBUG, "HandleSystemAudioArcStart: %s", ToString(command).c_str());
+    // LIB_CEC->AddLog(CEC_LOG_DEBUG, "HandleSystemAudioArcStart: %s", ToString(command).c_str());
     if (command.parameters.size == 0)
     {
-        LIB_CEC->AddLog(CEC_LOG_DEBUG, "HandleSystemAudioArcStart: params ok");
+        LIB_CEC->AddLog(CEC_LOG_DEBUG, "HandleSystemAudioArcStart: params ok, initiator %s", ToString(command.initiator));
 
-        CCECAudioSystem *device = CCECBusDevice::AsAudioSystem(GetDevice(command.initiator));
+        CCECAudioSystem *device = CCECBusDevice::AsAudioSystem(GetDevice(command.destination));
         if (device)
         {
-            LIB_CEC->AddLog(CEC_LOG_DEBUG, "HandleSystemAudioArcStart: device ok");
-            device->SetSystemAudioArcStart((cec_logical_address)command.parameters[0]);
+            LIB_CEC->AddLog(CEC_LOG_DEBUG, "HandleSystemAudioArcStart: audio device %s ok", ToString(command.initiator));
+            device->SetSystemAudioArcStart((cec_logical_address)command.initiator);
             return COMMAND_HANDLED;
         }
     }
