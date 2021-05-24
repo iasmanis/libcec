@@ -45,6 +45,7 @@ namespace CEC
 
     bool SetAudioStatus(uint8_t status);
     bool SetSystemAudioModeStatus(const cec_system_audio_status mode);
+    bool SetSystemAudioArcStart(const cec_logical_address initiator);
     bool TransmitAudioStatus(cec_logical_address dest, bool bIsReply);
     bool TransmitSetSystemAudioMode(cec_logical_address dest, bool bIsReply);
     bool TransmitSystemAudioModeStatus(cec_logical_address dest, bool bIsReply);
