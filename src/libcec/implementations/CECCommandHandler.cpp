@@ -724,7 +724,7 @@ int CCECCommandHandler::HandleSystemAudioModeStatus(const cec_command &command)
 int CCECCommandHandler::HandleSystemAudioArcStart(const cec_command &command)
 {
     LIB_CEC->AddLog(CEC_LOG_DEBUG, "HandleSystemAudioArcStart: %s", ToString(command).c_str());
-    if (command.parameters.size == 1)
+    if (command.parameters.size == 0)
     {
         LIB_CEC->AddLog(CEC_LOG_DEBUG, "HandleSystemAudioArcStart: params ok");
 
