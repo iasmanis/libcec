@@ -723,15 +723,20 @@ int CCECCommandHandler::HandleSystemAudioModeStatus(const cec_command &command)
 
 int CCECCommandHandler::HandleSystemAudioArcStart(const cec_command &command)
 {
+    LIB_CEC->AddLog(CEC_LOG_DEBUG, "HandleSystemAudioArcStart: %s", ToString(command).c_str());
     if (command.parameters.size == 1)
     {
+        LIB_CEC->AddLog(CEC_LOG_DEBUG, "HandleSystemAudioArcStart: params ok");
+
         CCECAudioSystem *device = CCECBusDevice::AsAudioSystem(GetDevice(command.initiator));
         if (device)
         {
+            LIB_CEC->AddLog(CEC_LOG_DEBUG, "HandleSystemAudioArcStart: device ok");
             device->SetSystemAudioArcStart((cec_logical_address)command.parameters[0]);
             return COMMAND_HANDLED;
         }
     }
+    LIB_CEC->AddLog(CEC_LOG_DEBUG, "HandleSystemAudioArcStart: return CEC_ABORT_REASON_INVALID_OPERAND");
 
     return CEC_ABORT_REASON_INVALID_OPERAND;
 }
