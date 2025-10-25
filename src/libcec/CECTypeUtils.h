@@ -452,6 +452,8 @@ namespace CEC
         return "CDC";
       case CEC_OPCODE_NONE:
         return "poll";
+      case CEC_OPCODE_REQUEST_SHORT_AUDIO_DESCRIPTORS:
+        return "request short audio descriptors";
       default:
         return "UNKNOWN";
       }
